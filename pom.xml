@@ -28,7 +28,7 @@
             <version>${selenium.version}</version>
         </dependency>
 
-        <!-- Parses the external per-environment config file (config/environments.json) -->
+        <!-- Parses the external per-environment config file (src/test/resources/environments.json) -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
