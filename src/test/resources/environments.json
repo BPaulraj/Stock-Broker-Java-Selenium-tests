@@ -1,0 +1,17 @@
+{
+  "DEV": {
+    "baseUrl": "http://localhost:5173/",
+    "testEmail": "nanthini.c@demo.com",
+    "testPassword": "Password@123"
+  },
+  "FTA": {
+    "baseUrl": "",
+    "testEmail": "",
+    "testPassword": ""
+  },
+  "INT": {
+    "baseUrl": "",
+    "testEmail": "",
+    "testPassword": ""
+  }
+}
