@@ -1,16 +1,19 @@
 {
   "DEV": {
     "baseUrl": "http://localhost:5173/",
+    "apiBaseUrl": "http://localhost:4100/api/v1",
     "testEmail": "nanthini.c@demo.com",
     "testPassword": "Password@123"
   },
   "FTA": {
     "baseUrl": "",
+    "apiBaseUrl": "",
     "testEmail": "",
     "testPassword": ""
   },
   "INT": {
     "baseUrl": "",
+    "apiBaseUrl": "",
     "testEmail": "",
     "testPassword": ""
   }

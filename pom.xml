@@ -18,6 +18,7 @@
         <cucumber.version>7.20.1</cucumber.version>
         <testng.version>7.10.2</testng.version>
         <json.version>20250107</json.version>
+        <restassured.version>5.5.1</restassured.version>
     </properties>
 
     <dependencies>
@@ -26,6 +27,13 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
+        </dependency>
+
+        <!-- API automation against the versioned REST API (packages/api, /api/v1/*) -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${restassured.version}</version>
         </dependency>
 
         <!-- Parses the external per-environment config file (src/test/resources/environments.json) -->

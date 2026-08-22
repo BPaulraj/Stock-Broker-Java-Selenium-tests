@@ -40,6 +40,10 @@ public final class ConfigReader {
         return System.getProperty("base.url", ENVIRONMENT_CONFIG.getString("baseUrl"));
     }
 
+    public static String getApiBaseUrl() {
+        return System.getProperty("api.base.url", ENVIRONMENT_CONFIG.getString("apiBaseUrl"));
+    }
+
     public static String getTestEmail() {
         return System.getProperty("test.email", ENVIRONMENT_CONFIG.getString("testEmail"));
     }
