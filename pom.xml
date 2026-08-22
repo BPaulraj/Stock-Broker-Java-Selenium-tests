@@ -15,18 +15,34 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <selenium.version>4.27.0</selenium.version>
+        <playwright.version>1.49.0</playwright.version>
         <cucumber.version>7.20.1</cucumber.version>
         <testng.version>7.10.2</testng.version>
         <json.version>20250107</json.version>
         <restassured.version>5.5.1</restassured.version>
+
+        <!-- Which TestNG suite file `mvn test` runs. Defaults to the legacy Selenium
+             suite so default `mvn test` behavior is unchanged; override per batch with
+             e.g. -DsuiteXmlFile=testng-playwright.xml to run the migrated suite instead. -->
+        <suiteXmlFile>testng.xml</suiteXmlFile>
     </properties>
 
     <dependencies>
-        <!-- UI automation - driver binaries resolved at runtime by Selenium Manager, no webdrivermanager needed -->
+        <!-- UI automation (legacy suite) - driver binaries resolved at runtime by Selenium Manager, no webdrivermanager needed -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
+        </dependency>
+
+        <!-- UI automation (Playwright migration, per the Gate-D-approved Migration Plan) -
+             browser binaries are Playwright's own, not Selenium Manager; one-time local/CI
+             setup: `mvn dependency:build-classpath -Dmdep.outputFile=cp.txt` then
+             `java -cp "target/test-classes;target/classes;$(cat cp.txt)" com.microsoft.playwright.CLI install` -->
+        <dependency>
+            <groupId>com.microsoft.playwright</groupId>
+            <artifactId>playwright</artifactId>
+            <version>${playwright.version}</version>
         </dependency>
 
         <!-- API automation against the versioned REST API (packages/api, /api/v1/*) -->
@@ -76,7 +92,7 @@
                 <version>3.5.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
